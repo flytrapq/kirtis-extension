@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kirtis</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; padding: 18px 20px 22px;
+      width: 380px;
+      background: #17223B; color: #F5F2EA;
+      font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    h1 {
+      margin: 0 0 4px; font-size: 15px; font-weight: 600;
+      font-family: Georgia, serif; letter-spacing: .01em;
+    }
+    .sub { color: #8A93AD; font-size: 12px; margin-bottom: 16px; }
+    fieldset { border: 0; border-top: 1px solid #2A3760; margin: 0 0 14px; padding: 12px 0 0; }
+    legend { padding: 0 8px 0 0; color: #E8A33D; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+    label { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; cursor: pointer; }
+    label.block { display: block; }
+    label span { flex: 1; }
+    .hint { display: block; color: #8A93AD; font-size: 11px; margin-top: 2px; }
+    select, input[type="number"], textarea {
+      width: 100%; margin-top: 6px; padding: 6px 8px;
+      background: #101833; color: #F5F2EA;
+      border: 1px solid #2A3760; border-radius: 6px; font: inherit;
+    }
+    textarea { height: 62px; resize: vertical; }
+    .pair { display: flex; gap: 10px; }
+    .pair > label { flex: 1; }
+    button {
+      padding: 7px 12px; border-radius: 7px; border: 1px solid #2A3760;
+      background: #24325A; color: #F5F2EA; font: inherit; cursor: pointer;
+    }
+    button:hover { border-color: #E8A33D; }
+    button.warn { background: transparent; color: #C3CADF; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .status { font-size: 11px; color: #8A93AD; min-height: 15px; margin-top: 8px; }
+    .status.ok { color: #9BD5A8; }
+    .status.err { color: #F0B4A8; }
+  </style>
+</head>
+<body>
+  <h1>Kirtis</h1>
+  <div class="sub" data-i18n="optSubtitle"></div>
+
+  <fieldset>
+    <legend data-i18n="secAccess"></legend>
+    <div class="row">
+      <button id="grant" type="button" data-i18n="grantBtn"></button>
+      <span id="permState" class="status"></span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="secBehavior"></legend>
+
+    <label>
+      <input type="checkbox" id="enabled">
+      <span data-i18n="lblEnabled">
+        <span class="hint" data-i18n="hintEnabled"></span>
+      </span>
+    </label>
+
+    <label class="block">
+      <span data-i18n="lblLang"></span>
+      <select id="uiLang"></select>
+    </label>
+
+    <label class="block">
+      <span data-i18n="lblTrigger"></span>
+      <select id="trigger">
+        <option value="button" data-i18n="trgButton"></option>
+        <option value="auto" data-i18n="trgAuto"></option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" id="latinOnly">
+      <span data-i18n="lblLatinOnly">
+        <span class="hint" data-i18n="hintLatinOnly"></span>
+      </span>
+    </label>
+
+    <label class="block">
+      <span data-i18n="lblMinLength"></span>
+      <select id="minLength">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="secPlacement"></legend>
+
+    <label class="block">
+      <span data-i18n="lblAnchor"></span>
+      <select id="buttonAnchor">
+        <option value="cursor" data-i18n="anchorCursor"></option>
+        <option value="selection-start" data-i18n="anchorStart"></option>
+        <option value="selection-end" data-i18n="anchorEnd"></option>
+      </select>
+    </label>
+
+    <div class="pair">
+      <label class="block">
+        <span data-i18n="lblOffsetX"></span>
+        <input type="number" id="offsetX" min="-200" max="200" step="2">
+      </label>
+      <label class="block">
+        <span data-i18n="lblOffsetY"></span>
+        <input type="number" id="offsetY" min="-200" max="200" step="2">
+      </label>
+    </div>
+    <span class="hint" data-i18n="hintPlacement"></span>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="secSites"></legend>
+    <label class="block">
+      <span data-i18n="lblDisabledHosts"></span>
+      <textarea id="disabledHosts" placeholder="mail.google.com&#10;docs.google.com"></textarea>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="secCache"></legend>
+    <label>
+      <input type="checkbox" id="useCache">
+      <span data-i18n="lblUseCache">
+        <span class="hint" data-i18n="hintUseCache"></span>
+      </span>
+    </label>
+    <div class="row">
+      <button id="clear" class="warn" type="button" data-i18n="clearBtn"></button>
+      <span id="cacheState" class="status"></span>
+    </div>
+  </fieldset>
+
+  <div id="saved" class="status"></div>
+
+  <script src="../data/i18n.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

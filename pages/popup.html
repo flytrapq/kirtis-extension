@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Kirtis</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; padding: 14px; width: 300px;
+      background: #17223B; color: #F5F2EA;
+      font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .row { display: flex; gap: 6px; }
+    input {
+      flex: 1; padding: 7px 9px; border-radius: 7px;
+      border: 1px solid #2A3760; background: #101833; color: #F5F2EA; font: inherit;
+    }
+    input:focus { outline: 2px solid #E8A33D; outline-offset: 1px; }
+    button {
+      padding: 7px 11px; border-radius: 7px; border: 1px solid #2A3760;
+      background: #24325A; color: #F5F2EA; font: inherit; cursor: pointer;
+    }
+    button:hover { border-color: #E8A33D; }
+    #out { margin-top: 12px; min-height: 20px; }
+    .entry { padding: 7px 0; border-top: 1px solid rgba(42,55,96,.55); }
+    .entry:first-child { border-top: 0; padding-top: 0; }
+    .word { font-family: Georgia, serif; font-size: 20px; font-weight: 600; color: #FFF7E8; }
+    .pos { font-family: Georgia, serif; font-style: italic; color: #E8A33D; margin-left: 6px; font-size: 13px; cursor: help; }
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+    .tag { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: rgba(138,147,173,.16); color: #C3CADF; cursor: help; }
+    .msg { color: #C3CADF; }
+    .msg.err { color: #F0B4A8; }
+    .foot { margin-top: 12px; padding-top: 9px; border-top: 1px solid #2A3760; font-size: 11px; display: flex; gap: 10px; }
+    .foot a, .foot button { color: #8A93AD; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: none; }
+    .foot a:hover, .foot button:hover { color: #E8A33D; }
+    .spacer { margin-left: auto; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <input id="q" type="text" autofocus maxlength="30">
+    <button id="go" type="button" data-i18n="popupGo"></button>
+  </div>
+  <div id="out"></div>
+  <div class="foot">
+    <a href="https://kirtis.info/#/krc" target="_blank" rel="noopener noreferrer">kirtis.info</a>
+    <button id="opts" class="spacer" type="button" data-i18n="popupSettings"></button>
+  </div>
+  <script src="../data/i18n.js"></script>
+  <script src="../data/abbr.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

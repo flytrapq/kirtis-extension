@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "Kirtis — lietuviškų žodžių kirčiavimas",
+  "version": "0.1.0",
+  "description": "Select a Lithuanian word to see where the stress falls. Data from kirtis.info",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{e6373d35-b9a6-4ca2-be6e-7b5ca4a5232e}",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent"
+        ]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "https://kirtis.info/*"
+  ],
+  "background": {
+    "scripts": [
+      "data/i18n.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "data/i18n.js",
+        "data/abbr.js",
+        "content/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "Kirtis",
+    "default_popup": "pages/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "pages/options.html",
+    "open_in_tab": false
+  },
+  "commands": {
+    "lookup-selection": {
+      "suggested_key": {
+        "default": "Alt+K"
+      },
+      "description": "Показать ударение у выделенного слова"
+    }
+  },
+  "homepage_url": "https://github.com/flytrapq/kirtis-extension"
+}
