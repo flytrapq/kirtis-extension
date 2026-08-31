@@ -13,7 +13,7 @@ word with its diacritics — this removes that step.
 
 ## Install
 
-From Firefox Add-ons: **[link once published]**
+From Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/kirtis-žodžių-kirčiavimas/
 
 Requires Firefox 140 or newer (Firefox for Android 142 or newer).
 
