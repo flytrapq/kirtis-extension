@@ -9,8 +9,6 @@ Lithuanian stress is not predictable from spelling, and it shifts between forms 
 the same word. Looking it up normally means opening a separate tab and retyping the
 word with its diacritics — this removes that step.
 
-![screenshot](docs/screenshot.png)
-
 ## Install
 
 From Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/kirtis-žodžių-kirčiavimas/
