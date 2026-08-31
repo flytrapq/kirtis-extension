@@ -16,7 +16,7 @@ const REQUEST_TIMEOUT_MS = 12000;
 /* Опознавательный User-Agent — по договорённости с UAB «Sistemium», чтобы они
    отличали трафик расширения в логах и могли написать напрямую.
    ВАЖНО: после публикации на AMO подставить сюда реальный адрес страницы. */
-const CONTACT_URL = "https://github.com/flytrapq/kirtis-extension";
+const CONTACT_URL = "https://addons.mozilla.org/en-US/firefox/addon/kirtis-žodžių-kirčiavimas/";
 const USER_AGENT = `KirtisLookup-Firefox/${api.runtime.getManifest().version} (+${CONTACT_URL})`;
 
 /* fetch() не даёт трогать User-Agent: он в списке forbidden header names и будет
