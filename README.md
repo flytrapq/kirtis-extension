@@ -9,9 +9,11 @@ Lithuanian stress is not predictable from spelling, and it shifts between forms 
 the same word. Looking it up normally means opening a separate tab and retyping the
 word with its diacritics — this removes that step.
 
+![screenshot](docs/screenshot.png)
+
 ## Install
 
-From Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/kirtis-žodžių-kirčiavimas/
+From Firefox Add-ons: **[link once published]**
 
 Requires Firefox 140 or newer (Firefox for Android 142 or newer).
 
@@ -143,6 +145,30 @@ append a block to `KIRTIS_I18N` and its code to `KIRTIS_LANGS` in `data/i18n.js`
   if you need selections inside embedded frames
 - Stress arrives as a finished string with diacritics; the extension does not split
   it into syllables or highlight the stressed vowel separately
+
+## Building a release
+
+Zip the **contents** of the folder, not the folder itself:
+
+```
+zip -r -FS ../kirtis.zip * -x '*.git*' 'tools/*' 'docs/*' 'README.ru.md'
+```
+
+Then upload at <https://addons.mozilla.org/developers/>.
+
+Two manifest keys are worth knowing about before you fork this:
+
+- `strict_min_version` is 140 (Android 142) because those are the versions where
+  Firefox shows its built-in data collection consent prompt. Going lower is allowed,
+  but AMO policy would then require a consent screen built into the extension itself.
+- `data_collection_permissions` is mandatory for new extensions submitted from
+  3 November 2025 onward. This one declares `required: ["websiteContent"]`, since the
+  selected word is page content and it is transmitted to a third party. Users see
+  this in the install prompt and can decline by cancelling the install.
+
+If you fork and publish your own build, change `gecko.id` in `manifest.json` to an
+identifier you own — either a GUID in braces or an `addon@your-domain` string.
+Reusing this one would collide on AMO.
 
 ## Licence and credits
 

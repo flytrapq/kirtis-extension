@@ -10,6 +10,7 @@ const DEFAULTS = {
   buttonAnchor: "cursor",
   offsetX: 6,
   offsetY: 6,
+  showLinks: true,
   useCache: true,
   disabledHosts: []
 };
@@ -68,6 +69,7 @@ function readForm() {
     buttonAnchor: $("buttonAnchor").value,
     offsetX: num("offsetX", 6),
     offsetY: num("offsetY", 6),
+    showLinks: $("showLinks").checked,
     useCache: $("useCache").checked,
     disabledHosts: $("disabledHosts").value
       .split("\n")
@@ -85,6 +87,7 @@ function fillForm(s) {
   $("buttonAnchor").value = s.buttonAnchor;
   $("offsetX").value = String(s.offsetX);
   $("offsetY").value = String(s.offsetY);
+  $("showLinks").checked = s.showLinks;
   $("useCache").checked = s.useCache;
   $("disabledHosts").value = (s.disabledHosts || []).join("\n");
 }
@@ -117,7 +120,7 @@ async function refreshPermState() {
   applyI18n();
 
   ["enabled", "trigger", "latinOnly", "minLength", "buttonAnchor",
-   "offsetX", "offsetY", "useCache", "disabledHosts"]
+   "offsetX", "offsetY", "showLinks", "useCache", "disabledHosts"]
     .forEach(id => $(id).addEventListener("change", save));
 
   $("uiLang").addEventListener("change", () => { applyI18n(); save(); });

@@ -20,6 +20,7 @@
     buttonAnchor: "cursor",
     offsetX: 6,
     offsetY: 6,
+    showLinks: true,
     disabledHosts: []
   };
   let T = kirtisStrings(settings.uiLang);
@@ -140,6 +141,19 @@
 }
 .foot a:hover, .foot button:hover { color: #E8A33D; }
 .spacer { margin-left: auto; }
+
+.links {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+  margin-top: 9px; padding-top: 8px;
+  border-top: 1px solid rgba(42, 55, 96, .55);
+  font-size: 11px;
+}
+.links-label { color: #6F7896; margin-right: 2px; }
+.links a {
+  color: #8A93AD; text-decoration: none;
+  border-bottom: 1px dotted rgba(138, 147, 173, .45);
+}
+.links a:hover { color: #E8A33D; border-bottom-color: rgba(232, 163, 61, .6); }
 
 .spinner {
   width: 13px; height: 13px; border-radius: 50%;
@@ -393,6 +407,25 @@
     return h;
   }
 
+  /* Ряд ссылок на внешние словари. Показывается и когда слово найдено, и когда
+     нет — во втором случае он как раз полезнее всего. */
+  function dictLinks(word) {
+    if (settings.showLinks === false || !word) return null;
+
+    const row = el("div", "links");
+    row.appendChild(el("span", "links-label", T.lookUpIn));
+
+    kirtisLinks(word, settings.uiLang).forEach(link => {
+      const a = el("a", null, link.title);
+      a.href = link.href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      row.appendChild(a);
+    });
+
+    return row;
+  }
+
   function footer(word, extraNote) {
     const f = el("div", "foot");
     const link = el("a", null, "kirtis.info");
@@ -426,6 +459,10 @@
     panelEl.replaceChildren();
     panelEl.appendChild(header(word || currentWord));
     panelEl.appendChild(el("div", "msg" + (isError ? " err" : ""), text));
+
+    const links = dictLinks(word || currentWord);
+    if (links) panelEl.appendChild(links);
+
     const f = footer(word || currentWord);
     if (withSettings) {
       const s = el("button", null, T.openSettings);
@@ -486,6 +523,9 @@
 
       panelEl.appendChild(entry);
     });
+
+    const links = dictLinks(res.word);
+    if (links) panelEl.appendChild(links);
 
     const note = [];
     if (res.items.length > 1) note.push(T.formsCount(res.items.length));

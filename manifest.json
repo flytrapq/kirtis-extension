@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Kirtis — lietuviškų žodžių kirčiavimas",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Select a Lithuanian word to see where the stress falls. Data from kirtis.info",
   "browser_specific_settings": {
     "gecko": {
@@ -47,6 +47,7 @@
       "js": [
         "data/i18n.js",
         "data/abbr.js",
+        "data/links.js",
         "content/content.js"
       ],
       "run_at": "document_idle",
@@ -71,7 +72,7 @@
       "suggested_key": {
         "default": "Alt+K"
       },
-      "description": "Показать ударение у выделенного слова"
+      "description": "Сукирчюоти выделенное слово"
     }
   },
   "homepage_url": "https://github.com/flytrapq/kirtis-extension"

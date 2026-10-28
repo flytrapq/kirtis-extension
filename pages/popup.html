@@ -30,6 +30,11 @@
     .tag { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: rgba(138,147,173,.16); color: #C3CADF; cursor: help; }
     .msg { color: #C3CADF; }
     .msg.err { color: #F0B4A8; }
+    .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+             margin-top: 11px; padding-top: 9px; border-top: 1px solid rgba(42,55,96,.55); font-size: 11px; }
+    .links-label { color: #6F7896; }
+    .links a { color: #8A93AD; text-decoration: none; border-bottom: 1px dotted rgba(138,147,173,.45); }
+    .links a:hover { color: #E8A33D; border-bottom-color: rgba(232,163,61,.6); }
     .foot { margin-top: 12px; padding-top: 9px; border-top: 1px solid #2A3760; font-size: 11px; display: flex; gap: 10px; }
     .foot a, .foot button { color: #8A93AD; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: none; }
     .foot a:hover, .foot button:hover { color: #E8A33D; }
@@ -47,6 +52,7 @@
     <button id="opts" class="spacer" type="button" data-i18n="popupSettings"></button>
   </div>
   <script src="../data/i18n.js"></script>
+  <script src="../data/links.js"></script>
   <script src="../data/abbr.js"></script>
   <script src="popup.js"></script>
 </body>

@@ -3,6 +3,7 @@ const api = typeof browser !== "undefined" ? browser : chrome;
 const out = document.getElementById("out");
 let uiLang = "en";
 let T = kirtisStrings(uiLang);
+let lastQuery = "";
 
 const STATUS_KEY = {
   "not-found": "notFound",
@@ -69,6 +70,27 @@ function groupItems(items) {
   return order;
 }
 
+function dictLinks(word) {
+  if (!word) return null;
+  const row = document.createElement("div");
+  row.className = "links";
+
+  const label = document.createElement("span");
+  label.className = "links-label";
+  label.textContent = T.lookUpIn;
+  row.appendChild(label);
+
+  kirtisLinks(word, uiLang).forEach(link => {
+    const a = document.createElement("a");
+    a.textContent = link.title;
+    a.href = link.href;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    row.appendChild(a);
+  });
+  return row;
+}
+
 function render(res) {
   out.replaceChildren();
   if (!res) return;
@@ -78,6 +100,8 @@ function render(res) {
     d.className = "msg" + (res.status === "not-found" ? "" : " err");
     d.textContent = T[STATUS_KEY[res.status]] || T.popupError;
     out.appendChild(d);
+    const miss = dictLinks(res.word || lastQuery);
+    if (miss) out.appendChild(miss);
     return;
   }
 
@@ -114,11 +138,15 @@ function render(res) {
 
     out.appendChild(entry);
   });
+
+  const links = dictLinks(res.word || lastQuery);
+  if (links) out.appendChild(links);
 }
 
 function run() {
   const word = document.getElementById("q").value.trim();
   if (!word) return;
+  lastQuery = word;
   out.textContent = T.loading;
   api.runtime.sendMessage({ type: "lookup", word })
     .then(render)

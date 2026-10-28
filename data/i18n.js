@@ -12,7 +12,7 @@ var KIRTIS_I18N = {
     loading: "Запрашиваем…",
     notFound: "Слово не найдено в базе kirtis.info",
     invalid: "Не похоже на отдельное слово",
-    multiword: "Получить ударение можно только у одного слова за раз",
+    multiword: "Кирчуется только одно слово за раз",
     tooLong: "Слишком длинное слово (больше 30 букв)",
     serverError: "Сервер kirtis.info ответил ошибкой",
     networkError: "Не удалось связаться с kirtis.info",
@@ -23,6 +23,10 @@ var KIRTIS_I18N = {
     copy: "Копировать",
     copied: "Скопировано",
     cached: "из кэша",
+    lookUpIn: "Посмотреть в",
+    secLinks: "Ссылки на словари",
+    lblShowLinks: "Показывать ссылки на словари",
+    hintShowLinks: "Строка со ссылками на Glosbe, Wiktionary и DeepL под результатом",
     formsCount: n => {
       const d = n % 10, h = n % 100;
       const w = d === 1 && h !== 11 ? "форма"
@@ -35,7 +39,7 @@ var KIRTIS_I18N = {
 
     // Попап
     popupPlaceholder: "Литовское слово",
-    popupGo: "Показать ударение",
+    popupGo: "Кирчевать",
     popupSettings: "Настройки",
     popupError: "Ошибка",
 
@@ -95,6 +99,10 @@ var KIRTIS_I18N = {
     copy: "Copy",
     copied: "Copied",
     cached: "cached",
+    lookUpIn: "Look up in",
+    secLinks: "Dictionary links",
+    lblShowLinks: "Show dictionary links",
+    hintShowLinks: "A row of links to Glosbe, Wiktionary and DeepL under the result",
     formsCount: n => `${n} form${n === 1 ? "" : "s"}`,
 
     ctxLookup: 'Show stress for "%s"',
@@ -159,6 +167,10 @@ var KIRTIS_I18N = {
     copy: "Kopijuoti",
     copied: "Nukopijuota",
     cached: "iš talpyklos",
+    lookUpIn: "Ieškoti",
+    secLinks: "Žodynų nuorodos",
+    lblShowLinks: "Rodyti žodynų nuorodas",
+    hintShowLinks: "Nuorodų į Glosbe, Wiktionary ir DeepL eilutė po rezultato",
     formsCount: n => `${n} ${n % 10 === 1 && n % 100 !== 11 ? "forma" : (n % 10 === 0 || (n % 100 >= 11 && n % 100 <= 19) ? "formų" : "formos")}`,
 
     ctxLookup: "Sukirčiuoti „%s“",
